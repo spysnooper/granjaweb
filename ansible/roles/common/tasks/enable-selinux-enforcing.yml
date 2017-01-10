@@ -1,0 +1,7 @@
+---
+- name: SELINUX | set ENFORCING mode
+  command: /sbin/setenforce 1
+  register: sestatus
+
+- name: SELINUX | set ENFORCING mode Persistent
+  copy: src=etc/selinux/config dest=/etc/selinux/config owner=root group=root mode=0644

@@ -1,0 +1,5 @@
+---
+- name: NGINX TEST | Test port {{nginx_port}} at localhost
+  uri:
+   url: "http://localhost:{{nginx_port}}"
+   status_code: 200

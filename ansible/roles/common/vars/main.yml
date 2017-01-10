@@ -1,0 +1,4 @@
+---
+# Variables del rol common
+timezone: Europe/Madrid
+ntp_server: hora.roa.es

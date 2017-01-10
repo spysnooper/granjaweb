@@ -1,0 +1,4 @@
+---
+# Variables del rol webservers
+nfs_server: 192.168.122.105
+http_port: 80

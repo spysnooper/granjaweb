@@ -1,0 +1,8 @@
+---
+- name: FIREWALLD | Installing FIREWALLD
+  yum: name={{ item }} state=latest
+  with_items:
+  - firewalld
+       
+- name: FIREWALLD | Start
+  service: name=firewalld enabled=true state=started

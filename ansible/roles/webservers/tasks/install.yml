@@ -1,0 +1,26 @@
+---
+# These tasks install http and the php modules.
+
+- name: YUM | install latest HTTPD, PHP, ...
+  yum: name={{ item }} state=latest
+  with_items:
+  - httpd
+  - php
+  - nfs-utils
+  tags:
+    - webserver
+    - app-node
+    - httpd
+    - nfs-client
+
+- name: FIREWALLD | Open Port {{http_port}}/tcp
+  firewalld:
+   state: enabled
+   port: "{{http_port}}/tcp"
+   permanent: true
+   immediate: yes
+  tags:
+    - firewall
+    - httpd
+    - webserver
+    - app-node

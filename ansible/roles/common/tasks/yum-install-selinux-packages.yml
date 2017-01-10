@@ -1,0 +1,9 @@
+---
+- name: SELINUX | Install SELinux Utils
+  yum: name={{ item }} state=latest
+  with_items:
+  - setroubleshoot-server
+  - setools-console
+  - libsemanage-python
+  - libselinux-python
+  - policycoreutils-python

@@ -1,0 +1,4 @@
+---
+# Playbooks for NFS-SERVER.
+- include: install.yml
+- include: configure.yml

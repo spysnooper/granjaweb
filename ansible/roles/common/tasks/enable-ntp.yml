@@ -1,0 +1,10 @@
+---
+- name: CHRONY | Install NTP service
+  yum: name=chrony state=latest
+  
+- name: CHRONY | CONFIGURE NTP Client
+  template: src=chrony.conf.j2 dest=/etc/chrony.conf owner=root group=root mode=0644
+  notify: restart chronyd
+  
+- name: CHRONY | Enable and Start NTP service
+  service: name=chronyd enabled=true state=started

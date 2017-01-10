@@ -1,0 +1,23 @@
+---
+- name: SELINUX | Configuring to allow httpd to connect to remote NFS server
+  seboolean: 
+   name=httpd_use_nfs
+   state=true
+   persistent=yes
+  tags:
+    - selinux
+    - webserver
+    - app-node
+    - httpd
+
+- name: NFS Client | Configure /etc/fstab to mount {{ nfs_server }}:/srv/web01 in /var/www/html/
+  mount:
+   name: /var/www/html
+   src: "{{ groups['nfs-server'][0] }}:/srv/web01"
+   fstype: nfs
+   state: mounted
+  tags:
+    - nfs-client
+    - webserver
+    - app-node
+    - httpd

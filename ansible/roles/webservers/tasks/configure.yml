@@ -1,0 +1,16 @@
+---
+# These tasks configure httpd
+- name: HTTPD | Configure /etc/httpd/conf/httpd.conf to Listen at {{http_port}}/tcp
+  template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf owner=root group=root mode=0644
+  notify: restart httpd
+  tags:
+    - httpd
+    - app-node
+    - webserver
+
+- name: HTTPD | Enable and Start HTTPD service
+  service: name=httpd state=started enabled=yes
+  tags:
+    - httpd
+    - app-node
+    - webserver

@@ -1,0 +1,6 @@
+---
+timezone: Europe/Madrid
+ntp_server: hora.roa.es
+http_port: 80
+nginx_port: 8080
+nfs_server: lb-node1 

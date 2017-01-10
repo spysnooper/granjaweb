@@ -1,0 +1,26 @@
+---
+#- name: NFS Server | SELinux context for apache
+#  sefcontext: target='/srv/web01' setype=public_content_t state=present
+
+#- name: NFS Server | SELinux context for apache
+#  sefcontext: target='/srv/web01(/.*)?' setype=public_content_t state=present
+
+- name: NFS Server | Upload index.php
+  copy: src=srv/web01/index.php dest=/srv/web01/ mode=0644
+
+- name: NFS Server | Upload phpinfo.php
+  copy: src=srv/web01/phpinfo.php dest=/srv/web01/ mode=0644
+  
+- name: NFS Server | CONFIGURE NFS Exports in NFS SERVER
+  copy: src=etc/exports dest=/etc/exports owner=root group=root mode=0644
+  notify: reload exports
+  
+- name: NFS Server | CONFIGURE NFS Server
+  copy: src=etc/sysconfig/nfs dest=/etc/sysconfig/nfs owner=root group=root mode=0644
+  notify: restart nfs-server
+  
+- name: NFS Server | Starting NFS
+  service: name=nfs-server state=started enabled=yes
+
+- name: NFS Server | Starting RPCBIND
+  service: name=rpcbind state=started enabled=yes

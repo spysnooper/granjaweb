@@ -1,0 +1,6 @@
+---
+# Playbooks for WEB SERVERS.
+- include: install.yml
+- include: mount.yml
+- include: configure.yml
+- include: test.yml

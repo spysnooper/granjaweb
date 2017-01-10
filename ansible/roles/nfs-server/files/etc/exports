@@ -1,0 +1,1 @@
+/srv/web01  *(wdelay,no_subtree_check,sec=sys,rw,secure,no_root_squash,no_all_squash)

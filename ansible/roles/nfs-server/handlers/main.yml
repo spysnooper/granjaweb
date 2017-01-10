@@ -1,0 +1,9 @@
+---
+- name: restart nfs-server
+  service: name=nfs-server state=restarted
+
+- name: restart rpcbind
+  service: name=rpcbind state=restarted
+
+- name: reload exports
+  action: shell exportfs -v -a

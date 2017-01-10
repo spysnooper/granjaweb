@@ -1,0 +1,8 @@
+---
+- name: YUM | Install common packages
+  yum: name={{ item }} state=latest
+  with_items:
+  - mc
+  - bash-completion
+  - tree
+  - vim-enhanced

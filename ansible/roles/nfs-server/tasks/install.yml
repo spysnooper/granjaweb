@@ -1,0 +1,12 @@
+---
+# These tasks install NFS Server.
+  
+- name: YUM | install latest NFS server, ...
+  yum: name=nfs-utils state=latest
+  
+- name: FIREWALLD | Open NFS service
+  firewalld: 
+   state: enabled
+   service: nfs
+   permanent: true
+   immediate: yes

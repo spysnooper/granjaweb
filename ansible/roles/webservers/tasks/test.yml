@@ -1,0 +1,9 @@
+---
+- name: HTTPD TEST | Test port {{http_port}} at localhost
+  uri:
+   url: "http://localhost:{{http_port}}"
+   status_code: 200
+  tags:
+    - webserver
+    - httpd
+    - app-node

@@ -1,0 +1,37 @@
+---
+# Playbook ROLESs for ALL HOSTs
+
+- name: Playbook ROLE for SERVERS
+  hosts: servers
+  remote_user: vagrant
+  become: yes
+  roles:
+    - common
+
+- name: Playbook ROLE for NFS Server
+  hosts: nfs-server
+  remote_user: vagrant
+  become: yes
+  roles:
+    - nfs-server
+    
+- name: Playbook ROLE for WebServers
+  hosts: webservers
+  remote_user: vagrant
+  become: yes
+  roles:
+    - webservers
+  tags:
+    - apache
+    - app-node
+
+- name: Playbook ROLE for LoadBalancers
+  hosts: loadbalancers
+  remote_user: vagrant
+  become: yes
+  roles:
+    - loadbalancers
+  tags:
+    - nginx
+    - lb-node
+

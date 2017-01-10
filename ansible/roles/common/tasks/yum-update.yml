@@ -1,0 +1,4 @@
+---
+- name: YUM | UPDATE ALL
+  yum: name=* state=latest update_cache=yes
+

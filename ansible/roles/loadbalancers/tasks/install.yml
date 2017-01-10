@@ -1,0 +1,18 @@
+---
+# These tasks install http and the php modules.
+  
+- name: YUM | install latest NGINX, ...
+  yum: name=nginx state=latest
+  tags:
+    - nginx
+
+- name: FIREWALLD | Open HTTPS service
+  firewalld: 
+   state: enabled
+   port: "{{nginx_port}}/tcp"
+   permanent: true
+   immediate: yes
+  tags:
+    - nginx
+    - firewall
+

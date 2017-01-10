@@ -1,0 +1,7 @@
+---
+
+- name: restart chronyd
+  service: name=chronyd state=restarted
+
+- name: restart firewalld
+  service: name=firewalld state=restarted
