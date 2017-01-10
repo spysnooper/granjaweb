@@ -6,7 +6,7 @@ El inventario lo genera vagrant, las IPs son dinamicas y los nombres se resuelve
 - Apache (app-node3)
 
 Para saber las IPs de las mauinas virtuales
-- ansible all --private-key=~/.vagrant.d/insecure_private_key -u vagrant -i .vagrant/provisioners/ansible/inventory -m setup -a "filter=*ansible_all_ipv4*"
+- ansible all --private-key=~/.vagrant.d/insecure_private_key -u vagrant -i .vagrant/provisioners/ansible/inventory -m setup -a "filter=ansible_all_ipv4*"
 
 
 Para descargar el box de centos 7 o instalar plugins de vagrant, si necesitamos proxy:
