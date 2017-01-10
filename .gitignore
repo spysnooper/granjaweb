@@ -1,0 +1,12 @@
+# OS-specific
+.DS_Store
+
+# Editor swapfiles
+.*.sw?
+*~
+
+# Vagrant stuff
+/.vagrant
+
+# Playbook Retries 
+/ansible/playbook.retry
