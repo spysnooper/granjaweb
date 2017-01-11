@@ -5,7 +5,7 @@ El inventario lo genera vagrant, las IPs son dinamicas y los nombres se resuelve
 - Apache (app-node2)
 - Apache (app-node3)
 
-Para saber las IPs de las mauinas virtuales
+Para saber las IPs de las maquinas virtuales
 - ansible all --private-key=~/.vagrant.d/insecure_private_key -u vagrant -i .vagrant/provisioners/ansible/inventory -m setup -a "filter=ansible_all_ipv4*"
 
 
