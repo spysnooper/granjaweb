@@ -9,4 +9,4 @@
 /.vagrant
 
 # Playbook Retries 
-/ansible/playbook.retry
+/ansible/*.retry
