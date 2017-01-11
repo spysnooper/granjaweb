@@ -11,8 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   vagrant_cluster_config = {
     "box_name"  => ENV['VAGRANT_BOX_NAME'] || "centos/7",
     "num_hosts" => ENV['VAGRANT_NUM_HOSTS'] || 4,
-    "lb_node_mem"  => ENV['VAGRANT_LB_NODE_MEM'] || 512,
-    "app_node_mem"  => ENV['VAGRANT_WEB_NODE_MEM'] || 512
+    "lb_node_mem"  => ENV['VAGRANT_LB_NODE_MEM'] || 1024,
+    "app_node_mem"  => ENV['VAGRANT_WEB_NODE_MEM'] || 1024
   }
 
 # Cofiguramos la plantilla a utilizar
@@ -50,18 +50,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end	# end domain
       end	# end if
     end		# end node
-
-# Las Maquinas virtuales salen a internet con mi proxy cntlm
-    config.vm.provision :ansible do |ansible|
-      ansible.groups = {
-        "loadbalancers" => ["lb-node1"],
-        "nfs-server" => ["lb-node1"],
-        "webservers" => ["app-node1", "app-node2", "app-node3"],
-        "servers:children" => ["loadbalancers", "webservers", "nfs-server"]
-      }
-      ansible.playbook = "./ansible/playbook.yml"
-      ansible.verbose = 'v'
-    end		# end ansible
   end 		# end i
+  config.vm.provision :ansible do |ansible|
+    ansible.groups = {
+      "loadbalancers" => ["lb-node1"],
+      "nfs-server" => ["lb-node1"],
+      "webservers" => ["app-node1", "app-node2", "app-node3"],
+      "servers:children" => ["loadbalancers", "webservers", "nfs-server"]
+    }
+    ansible.playbook = "./ansible/playbook.yml"
+    #ansible.verbose = 'v'
+  end		# end ansible
 end 		# end config
-
