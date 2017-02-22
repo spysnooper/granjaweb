@@ -3,7 +3,7 @@
 #- include: ping.yml
 - include: set-hostname.yml
 - include: yum-repo-epel.yml
-- include: yum-update.yml  
+#- include: yum-update.yml  
 - include: yum-install-common-packages.yml
 - include: yum-install-selinux-packages.yml
 - include: enable-selinux-enforcing.yml

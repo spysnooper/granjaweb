@@ -12,7 +12,7 @@ http {
   upstream backend {
     # hash $remote_addr consistent;
 {% for id in range(0,groups['webservers'] | length) %} 
-    server {{ groups['webservers'][id] }};
+    server {{ hostvars[groups.webservers[id]].ansible_ssh_host }};
 {% endfor %}
   }
   server {
